@@ -85,7 +85,6 @@ use App\Mail\TestMail;
 
 Route::get('/sendmail', function() {
     Mail::to(\App\User::first()->email)
-        ->subject('Test Mail')
         ->send(new TestMail);
     return 'sent?';
 });

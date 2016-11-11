@@ -2,8 +2,8 @@
 
 namespace robrogers\Larajet\Providers;
 
-use robrogers3\Larajet\Facades\MailJet;
-use robrogers3\Larajet\TransportManager;
+use robrogers\Larajet\Facades\MailJet;
+use robrogers\Larajet\TransportManager;
 use Illuminate\Mail\Mailer;
 use Illuminate\Support\ServiceProvider;
 use Swift_Mailer;
