@@ -24,7 +24,6 @@
     "illuminate/support": "5.1.* || 5.2.* || 5.3.*"
   },
   "require-dev": {
-    "illuminate/foundation": "5.3.*",
     "phpunit/phpunit": "~4.0||~5.0",
     "squizlabs/php_codesniffer": "^2.3"
   },
