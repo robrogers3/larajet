@@ -1,11 +1,12 @@
 {
-  "name": "robrogers/Larajet",
+  "name": "robrogers/larajet",
   "type": "library",
-  "description": "Laravel MailJet MailJetTransport",
+  "description": "Laravel Mail Transport for Mailjet",
   "keywords": [
     "laravel",
     "mail",
-    "mailjet"
+    "mailjet",
+    "mail driver"
   ],
   "homepage": "https://github.com/robrogers3/larajet",
   "license": "MIT",
@@ -17,13 +18,13 @@
       "role": "Developer"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": "~5.6|~7.0",
     "guzzlehttp/guzzle": "^6.2",
     "illuminate/support": "5.1.* || 5.2.* || 5.3.*"
   },
   "require-dev": {
+    "illuminate/foundation": "5.3.*",
     "phpunit/phpunit": "~4.0||~5.0",
     "squizlabs/php_codesniffer": "^2.3"
   },

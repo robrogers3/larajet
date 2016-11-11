@@ -10,10 +10,8 @@
 Larajet is a mail transport for Laravel. It is a MailJet integration package. Much like Mailgun, this allows for sending Mail via the mailjet api (based on Mailjet API v3.) 
 It supports Mailables and Notifables.
 
-Note much of the code came from [Sboo](https://github.com/sboo) check out his repo [here](https://github.com/sboo/laravel5-mailjet).
+[Sboo](https://github.com/sboo) had already done a lot of the heavy lifting.
 
-It didn't work with mailables and notifables. And had some problems with current versions of Guzzle and Ques.
-I just fixed those.
 ## Install
 
 Via Composer
