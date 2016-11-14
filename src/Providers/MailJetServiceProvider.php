@@ -8,7 +8,8 @@ use Illuminate\Mail\Mailer;
 use Illuminate\Support\ServiceProvider;
 use Swift_Mailer;
 
-class MailJetServiceProvider extends ServiceProvider {
+class MailJetServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -24,64 +25,63 @@ class MailJetServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton('mailjet', function($app)
-        {
-            $config = $app['config']->get('services.mailjet', array());
-            return new Mailjet($config['public_key'], $config['private_key']);
-        });
-
-        $this->app->bind('mailer', function($app)
-        {
-            $this->registerSwiftMailer();
-
-            // Once we have create the mailer instance, we will set a container instance
-            // on the mailer. This allows us to resolve mailer classes via containers
-            // for maximum testability on said classes instead of passing Closures.
-            $mailer = new Mailer(
-                $app['view'], $app['swift.mailer'], $app['events']
-            );
-
-            $this->setMailerDependencies($mailer, $app);
-
-            // If a "from" address is set, we will set it on the mailer so that all mail
-            // messages sent by the applications will utilize the same "from" address
-            // on each one, which makes the developer's life a lot more convenient.
-            $from = $app['config']['mail.from'];
-
-            if (is_array($from) && isset($from['address']))
-            {
-                $mailer->alwaysFrom($from['address'], $from['name']);
+        $this->app->singleton(
+            'mailjet', function ($app) {
+                $config = $app['config']->get('services.mailjet', array());
+                return new Mailjet($config['public_key'], $config['private_key']);
             }
+        );
 
-            // Here we will determine if the mailer should be in "pretend" mode for this
-            // environment, which will simply write out e-mail to the logs instead of
-            // sending it over the web, which is useful for local dev environments.
-/*            $pretend = $app['config']->get('mail.pretend', false);
+        $this->app->bind(
+            'mailer', function ($app) {
+                $this->registerSwiftMailer();
 
-            $mailer->pretend($pretend);*/
+                // Once we have create the mailer instance, we will set a container instance
+                // on the mailer. This allows us to resolve mailer classes via containers
+                // for maximum testability on said classes instead of passing Closures.
+                $mailer = new Mailer(
+                    $app['view'], $app['swift.mailer'], $app['events']
+                );
 
-            return $mailer;
-        });
+                $this->setMailerDependencies($mailer, $app);
+
+                // If a "from" address is set, we will set it on the mailer so that all mail
+                // messages sent by the applications will utilize the same "from" address
+                // on each one, which makes the developer's life a lot more convenient.
+                $from = $app['config']['mail.from'];
+
+                if (is_array($from) && isset($from['address'])) {
+                    $mailer->alwaysFrom($from['address'], $from['name']);
+                }
+
+                // Here we will determine if the mailer should be in "pretend" mode for this
+                // environment, which will simply write out e-mail to the logs instead of
+                // sending it over the web, which is useful for local dev environments.
+                /*            $pretend = $app['config']->get('mail.pretend', false);
+                        $mailer->pretend($pretend);*/
+
+                return $mailer;
+            }
+        );
     }
 
     /**
      * Set a few dependencies on the mailer instance.
      *
-     * @param  \Illuminate\Mail\Mailer  $mailer
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Mail\Mailer            $mailer
+     * @param \Illuminate\Foundation\Application $app
+     * 
      * @return void
      */
-    protected function setMailerDependencies($mailer, $app)
+    protected function setMailerDependencies(Mailer $mailer, $app)
     {
         $mailer->setContainer($app);
 
-        if ($app->bound('log'))
-        {
+        if ($app->bound('log')) {
             //$mailer->setLogger($app['log']->getMonolog());
         }
 
-        if ($app->bound('queue'))
-        {
+        if ($app->bound('queue')) {
             $mailer->setQueue($app['queue']);
         }
     }
@@ -97,10 +97,11 @@ class MailJetServiceProvider extends ServiceProvider {
         // Once we have the transporter registered, we will register the actual Swift
         // mailer instance, passing in the transport instances, which allows us to
         // override this transporter instances during app start-up if necessary.
-        $this->app['swift.mailer'] = $this->app->share(function($app)
-        {
-            return new Swift_Mailer($app['swift.transport']->driver());
-        });
+        $this->app['swift.mailer'] = $this->app->share(
+            function ($app) {
+                return new Swift_Mailer($app['swift.transport']->driver());
+            }
+        );
     }
 
     /**
@@ -110,10 +111,11 @@ class MailJetServiceProvider extends ServiceProvider {
      */
     protected function registerSwiftTransport()
     {
-        $this->app['swift.transport'] = $this->app->share(function($app)
-        {
-            return new TransportManager($app);
-        });
+        $this->app['swift.transport'] = $this->app->share(
+            function ($app) {
+                return new TransportManager($app);
+            }
+        );
     }
 
     /**

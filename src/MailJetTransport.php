@@ -38,7 +38,12 @@ class MailJetTransport extends Transport implements Swift_Transport
 
     protected $apiUrl;
 
-    public function __construct($config)
+    /**
+     * MailJetTransport constructor.
+     *
+     * @param array $config
+     */
+    public function __construct(array $config)
     {
         $this->client = new Client($config['guzzle']); //get guzzle config
         $this->apiUrl = $config['api_url'];
@@ -97,15 +102,20 @@ class MailJetTransport extends Transport implements Swift_Transport
                 'Recipients' => $recipients,
             ],
         ];
-        /** @var Swift_Mime_SimpleMimeEntity[] $attachments */
+
+        /**
+         * @var Swift_Mime_SimpleMimeEntity[] $attachments
+        */
         if ($attachments = $message->getChildren()) {
-            $options['json']['Attachments'] = array_map(function ($attachment) {
-                return [
+            $options['json']['Attachments'] = array_map(
+                function ($attachment) {
+                    return [
                     'Content-type' => $attachment->getContentType(),
                     //'Filename' => $attachment->getFileName(),
                     'content' => Swift_Encoding::getBase64Encoding()->encodeString($attachment->getBody()),
-                ];
-            }, $attachments);
+                    ];
+                }, $attachments
+            );
         }
         return $this->client->post($this->apiUrl, $options);
     }
@@ -150,9 +160,11 @@ class MailJetTransport extends Transport implements Swift_Transport
      */
     protected function getFrom(Swift_Mime_Message $message)
     {
-        return array_map(function ($email, $name) {
-            return compact('name', 'email');
-        }, array_keys($message->getFrom()), $message->getFrom())[0];
+        return array_map(
+            function ($email, $name) {
+                return compact('name', 'email');
+            }, array_keys($message->getFrom()), $message->getFrom()
+        )[0];
     }
 
     /**
@@ -204,7 +216,7 @@ class MailJetTransport extends Transport implements Swift_Transport
     /**
      * Set the private API key being used by the transport.
      *
-     * @param string
+     * @param string $privateKey
      *
      * @return string
      */

@@ -4,11 +4,12 @@ namespace robrogers\Larajet;
 
 use Illuminate\Mail\TransportManager as BaseTransportManager;
 
-class TransportManager extends BaseTransportManager {
+class TransportManager extends BaseTransportManager
+{
     /**
      * Create an instance of the Mailjet Swift Transport driver.
      *
-     * @return MailjetTransport
+     * @return MailJetTransport
      */
     protected function createMailjetDriver()
     {
