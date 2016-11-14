@@ -1,6 +1,6 @@
 # Larajet
 
-[![Latest Version on Packagist][ico-version]](https://travis-ci.org/robrogers3/larajet)
+[![Latest Version on Packagist][ico-version]](https://packagist.org/packages/robrogers/larajet)
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/robrogers3/larajet)
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
