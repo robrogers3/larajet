@@ -1,6 +1,6 @@
 # Larajet
 
-[![Latest Version on Packagist][ico-version]](https://packagist.org/packages/robrogers/larajet)
+[![Package version](https://img.shields.io/packagist/v/robrogers/larajet.svg?style=flat-square)](https://packagist.org/packages/robrogers/larajet)
 [![Software License][ico-license]](LICENSE.md)
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
