@@ -18,10 +18,19 @@
       "role": "Developer"
     }
   ],
-  "require": {
-    "php": "~5.6|~7.0",
-    "guzzlehttp/guzzle": "^6.2",
-    "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.*"
+    "repositories": [
+    {
+      "type": "path",
+      "url": "/Users/rob.rogers/projects/laraldap-auth",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
+    "require": {
+        "php": ">=5.6",
+        "guzzlehttp/guzzle": "^6.2",
+        "illuminate/support": ">=5.1"
   },
   "require-dev": {
     "laravel/framework": "5.3.*",
