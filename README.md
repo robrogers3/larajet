@@ -16,7 +16,7 @@ It supports Mailables and Notifables.
 Via Composer
 
 ``` bash
-$ composer require robrogers3/larajet
+$ composer require robrogers/larajet
 ```
 
 You will need to update app.php
