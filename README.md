@@ -17,16 +17,21 @@ Via Composer
 $ composer require robrogers/larajet
 ```
 
-You will need to update app.php
+## Configure
 
-In Package Service Providers add
+You will need to update app.php in the config directory:
 
+In Package Service Providers section add:
+```
 Larajet\MailjetServiceProvider::class
+```
 
 Also, add this line to the 'aliases' array
+```
 'MailJet' => Larajet\Facades\MailJet::class,
+```
 
-Then you need to configure services.php. Add this:
+Then you need to update config/services.php. Add this under Third Party Services:
 
 ``` php
     'mailjet' => [
@@ -39,7 +44,12 @@ Then you need to configure services.php. Add this:
     ],
 ```
 
-You will need to update your .env file accordingly.
+Lasty, you will need to update your .env file accordingly to set your MailJet Public and Private keys.
+
+```
+MAILJET_PUBLIC_KEY=YOUR_PUBLIC_KEY
+MAILJET_PRIVATE_KEY=YOUR_PRIVATE_KEY
+```
 
 ## Usage
 
@@ -59,7 +69,7 @@ Mail::to(fred@example.com)
         ->send(new TestMail);
 ```
 
-Learn about [Mailables](https://laravel.com/docs/5.3/mail)
+Learn about [Mailables](https://laravel.com/docs/5.3/mail) on laravel.com
 
 ## Change log
 
