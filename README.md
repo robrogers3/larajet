@@ -2,8 +2,6 @@
 
 [![Package version](https://img.shields.io/packagist/v/robrogers/larajet.svg?style=flat-square)](https://packagist.org/packages/robrogers/larajet)
 [![Software License][ico-license]](LICENSE.md)
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
 [![Total downloads](http://img.shields.io/packagist/dt/robrogers/larajet.svg?style=flat-square)](https://packagist.org/packages/robrogers/larajet)
 
 Larajet is a mail transport for Laravel. It is a MailJet integration package. Much like Mailgun, this allows for sending Mail via the mailjet api (based on Mailjet API v3.) 
